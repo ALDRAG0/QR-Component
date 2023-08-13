@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | QR code component</title>
-
+  
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     *,
@@ -59,10 +59,33 @@
         aspect-ratio: 1;
         overflow: hidden;
         border-radius: var(--radius);
+        padding: 60px;
+        background-color: #1e90ff;
 
         & img {
           width: 100%;
           object-fit: contain;
+        }
+
+        position: relative;
+        & ::before, & ::after {
+          content: "";
+          position: absolute;
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+        & ::before {
+          width: 120%;
+          aspect-ratio: 1.2/1;
+          border-radius: 50%;
+          left: -50%;
+          top: -50%;
+        }
+        & ::after {
+          width: 100%;
+          aspect-ratio: 1.2/1;
+          border-radius: 50%;
+          right: -50%;
+          bottom: -57%;
         }
       }
 
@@ -90,18 +113,24 @@
       }
     }
     
-    @media screen and (orientation: landscape) {
+    @media screen and (max-width: 768px) and (orientation: landscape) {
       .qr-container {
         flex-direction: row;
         width: min(600px, 100%);
+
+        & .qr-wrapper {
+          padding: 70px;
+        }
       }
     }
   </style>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
 <body>
   <div class="qr-container">
     <div class="qr-wrapper">
-      <img src="./images/image-qr-code.png" alt="qr_code" />
+      <!-- <img src="./images/image-qr-code.png" alt="qr_code" /> -->
+      <div class="qr_code" id="qr_code"></div>
     </div>
     <div class="qr-info">
       <h1>Improve your front-end skills by building projects</h1>
@@ -113,5 +142,16 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Aldrag0</a>.
   </div>
+
+  <script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qr_code"), {
+    text: "https://www.frontendmentor.io/challenges/qr-code-component-iux_sIO_H/hub",
+    width: 576,
+    height: 576,
+    colorDark : "#ffffff",
+    colorLight : "#1e90ff",
+    correctLevel : QRCode.CorrectLevel.H
+  });
+  </script>
 </body>
 </html>

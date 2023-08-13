@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | QR code component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    :root {
+      --outer-space: 30px;
+      --small_edge: 300px;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+
+      background-color: #c1d3e2;
+      position: relative;
+    }
+
+    .attribution {
+      position: absolute;
+      bottom: var(--outer-space);
+      right: var(--outer-space);
+
+      font-size: 11px; text-align: center; 
+    }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    .qr-container {
+      --radius: 15px;
+      
+      background-color: white;
+      box-shadow: 0 0 5px rgb(167, 167, 167);
+      width: min(300px, 100%);
+      overflow: hidden;
+      border-radius: var(--radius);
+      padding: 1em;
+
+      display: flex;
+      flex-direction: column;
+
+      & .qr-wrapper {
+        aspect-ratio: 1;
+        overflow: hidden;
+        border-radius: var(--radius);
+
+        & img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+
+      & .qr-info {
+        text-align: center;
+        font-family: sans-serif;
+        padding: 1rem;
+
+        & h1 {
+          font-size: 1.5rem;
+          margin-block: 0.8em;
+        }
+
+        & p {
+          color: #777777;
+        }
+      }      
+    }
+
+    @media screen and (max-width: 768px) {
+      .attribution {
+        left: auto;
+        right: auto;
+        bottom: var(--outer-space);
+      }
+    }
+    
+    @media screen and (orientation: landscape) {
+      .qr-container {
+        flex-direction: row;
+        width: min(600px, 100%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="qr-container">
+    <div class="qr-wrapper">
+      <img src="./images/image-qr-code.png" alt="qr_code" />
+    </div>
+    <div class="qr-info">
+      <h1>Improve your front-end skills by building projects</h1>
+      <p>Scan the QR code to visit Frontend Mentor and take your coding skills to the next level</p>
+    </div>
+  </div>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Aldrag0</a>.
+  </div>
+</body>
+</html>
